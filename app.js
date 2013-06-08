@@ -9,7 +9,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , io = require('socket.io')
-  , ; //tasks = require('./tasks');
+  ; //, tasks = require('./tasks');
 
 var app = express();
 
