@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.top.span12
+    form.form-horizontal(method="post", id="loginForm")
+      label Username
+      input.span3(id="username", type="text", name="User", placeholder="Enter your username")
+      label Password
+      input.span3(id="password", type="password", name="Password")
+      input.btn(type="submit", value="Log In")
+  div.container
+    div.content
+      h1= title
+      p Welcome to #{title}
+      div#status
+      div#counter
+      table.table.table-striped
+        thead
+          tr
+            th Table
+            th Heading
+          tbody
+          tr
+            td Blah
+            td Test
+          tr
+            td Hello
+            td World
+    div.footer
