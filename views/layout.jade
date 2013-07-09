@@ -8,6 +8,30 @@ html
     script(src='/vendor/modernizr/modernizr-2.6.2.min.js')
     script(src='/vendor/respond/respond-1.1.0.min.js')
   body
+    div.navbar.navbar-inverse.navbar-fixed-top
+      div.navbar-inner
+        div.container-fluid
+          button.btn.btn-navbar(type='button', data-toggle='collapse', data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='#') GW2 Events
+          div.nav-collapse.collapse
+            p.navbar-text.pull-right Logged in as 
+              a.navbar-link(href='#') Username
+            ul.nav
+              if menu == 'home'
+                li.active
+                  a(href='/') Home
+              else
+                li
+                  a(href='/') Home
+              if menu == 'world'
+                li.active
+                  a(href='/worlds') World
+              else
+                li
+                  a(href='/worlds') World
     block content
     script(src='/socket.io/socket.io.js')
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js')
@@ -18,3 +42,4 @@ html
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src='//www.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
+

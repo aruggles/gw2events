@@ -6,10 +6,10 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , world = require('./routes/world')
   , http = require('http')
   , path = require('path')
-  , io = require('socket.io')
-  ; //, tasks = require('./tasks');
+  , tasks = require('./tasks');
 
 var app = express();
 
@@ -34,12 +34,18 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/worlds', world.index);
+app.get('/worlds/:id', world.view);
+app.get('/worlds/:id/events', world.events);
 
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
 var io = require('socket.io').listen(server);
+io.enable('browser client minification');  // send minified client
+io.enable('browser client etag');          // apply etag caching logic based on version number
+//io.enable('browser client gzip');          // gzip the file
 
 var status = "Connection Successful.";
 
